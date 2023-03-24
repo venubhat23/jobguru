@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>Profile Page</h2>
+
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+          <tr>
+            <td>{{ account['username'] }}</td>
+            <td>{{ account['password'] }}</td>
+            <td>{{ account['email'] }}</td>
+          </tr> 
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Company Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+
+<p>Welcome back, {{ username }}!</p>
+<p>You are the User(Job Seacker)</p>
+<p>List of Notifications</p>
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Messages</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for notification in notifications %}
+          <tr>
+            <td>{{notification['id']}}</td>
+            <td>{{notification['message']}}</td>
+          </tr> 
+    {% endfor %}      
+    </tbody>
+</table>
+
+
+    
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block title %}Company Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+              <div class="d-lg-none"><a href="{{ url_for('post_job') }}"><span class="mr-2">+</span> Post a Job</a></div>
+
+<p>Welcome back, {{ username }}!</p>
+<p>List of Jobs</p>

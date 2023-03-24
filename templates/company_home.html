@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block title %}Company Home{% endblock %}
+
+{% block content %}
+<h2>Compnany's Home Page.Welcome back, {{ username }}!</h2>
+
+
+<table class="styled-table" style="width:72pc;">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Title</th>
+            <th>Skills</th>
+            <th>Education</th>
+            <th>Working Mode</th>
+            <th>working Hour</th>
+            <th>Website</th>
+            <th>company Name</th>
+            <th>Twitter Link</th>
+            <th>Start Date</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% if jobs %}
+        {% for job in jobs %}
+              <tr>
+                <td>{{job['id']}}</td>
+                <td><a href="/applied_list/{{job['id']}}" class="btn btn-outline-secondary btn-sm">{{job['title']}}</a></td>
+                <td>{{job['skills']}}</td>
+                <td>{{job['education']}}</td>
+                <td>{{job['working_mode']}}</td>
+                <td>{{job['working_hour']}}</td>
+                <td>{{job['website']}}</td>
+                <td>{{job['company_name']}}</td>
+                <td>{{job['twitter_link']}}</td>
+                <td>{{job['start_date']}}</td>
+                <td><a href="/delete_job/{{job['id']}}" class="btn btn-outline-secondary btn-sm">Delete</a></td>
+
+              </tr> 
+        {% endfor %}
+    {% else %}
+            <tr>
+                <td colspan="12" style="text-align: center;">No records found</td>
+            </tr> 
+    {% endif %}
+
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}
+
+<style type="text/css">
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+</style>

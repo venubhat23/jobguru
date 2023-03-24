@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}Company Home{% endblock %}
+
+{% block content %}
+<h2>List of Interested Job Seakers </h2>
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>User Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if accounts %}
+        {% for user in accounts %}
+              <tr>
+                <td>{{user['id']}}</td>
+                <td>{{user['username']}}</td>
+                <td>{{user['email']}}</td>
+              </tr> 
+        {% endfor %}
+    {% else %}
+            <tr>
+                <td colspan="12" style="text-align: center;">No records found</td>
+            </tr> 
+    {% endif %}   
+    </tbody>
+</table>
+
+
+    
+
+
+
+
+
+{% endblock %}

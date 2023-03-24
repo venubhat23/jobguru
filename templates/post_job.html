@@ -1,0 +1,220 @@
+<html style="background-color: #ddefb3">
+
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Post a Job</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+
+      <form action="{{ url_for('submit_job') }}" method="POST" autocomplete="off">
+                        <div class="msg">{{ msg }}</div>
+
+        <h1>Post a Job</h1>
+        
+        <fieldset>
+          <legend><span class="number">1</span>Your basic info</legend>
+          
+          <label for="job_posters_email">Email:</label>
+          <input type="email" id="job_posters_email" name="job_posters_email">
+          
+          <label for="title">Job Title:</label>
+          <input type="text" id="title" name="title">
+
+          <label for="job_location">Job Location:</label>
+          <input type="text" id="job_location" name="job_location">
+
+          <label for="job_region">Job Region:</label>
+          <input type="text" id="job_region" name="job_region">
+
+          <label for="job_description">Job Description:</label>
+          <textarea id="job_description" name="job_description"> </textarea>
+
+          <label for="start_date">Job Start Date:</label>
+          <input type="date" id="start_date" name="start_date">
+          
+          <label for="skills">Skills:</label>
+          <input type="text" id="skills" name="skills">
+
+          <label for="education">Education:</label>
+          <input type="text" id="education" name="education">
+
+          <label for="experience">Required Experince:</label>
+          <input type="text" id="experience" name="experience">
+
+          <label for="package">Package:</label>
+          <input type="text" id="package" name="package">
+
+          <label for="working_mode">Working Mode:</label>
+          <input type="text" id="working_mode" name="working_mode">
+
+          <label for="working_hour">Working Hour:</label>
+          <input type="text" id="working_hour" name="working_hour">
+
+          <label for="open_postions">Open Positions:</label>
+          <input type="text" id="open_postions" name="open_postions">
+
+          <label for="category_name">Job Category:</label>
+          <input type="text" id="category_name" name="category_name">
+
+          <label for="benifit">Benifit:</label>
+          <input type="text" id="benifit" name="benifit">
+
+        </fieldset>
+        
+        <fieldset id="company_profile">
+          <legend><span class="number">2</span>Company profile</legend>
+          <label for="company_name">Company Name:</label>
+          <input type="text" id="company_name" name="company_name">
+
+          <label for="company_location">Company Location:</label>
+          <input type="text" id="company_location" name="company_location">
+
+          <label for="company_description">Company Description (Optional):</label>
+          <textarea id="company_description" name="company_description"> </textarea>
+
+          <label for="website">Website:</label>
+          <input type="text" id="website" name="website">
+
+          <label for="twitter_link">Twitter Link:</label>
+          <input type="text" id="twitter_link" name="twitter_link">
+
+
+
+        </fieldset>
+
+
+        <button type="submit">Post a Job</button>
+        </h2>
+              <h2 style="padding: center">Back to .<a href="{{ url_for('company_home') }}" class="active">Home Page</a>
+
+      </form>
+    </body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<style type="text/css">
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+
+form {
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+button {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+.number {
+  background-color: #5fcf80;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  border-radius: 100%;
+}
+
+@media screen and (min-width: 480px) {
+
+  form {
+    max-width: 480px;
+  }
+
+}
+
+</style>

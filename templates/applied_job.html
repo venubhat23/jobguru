@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}Company Home{% endblock %}
+
+{% block content %}
+<h2>Hi {{ username }}!, Yours Applied Jobs</h2>
+
+<table class="styled-table" style="width: 72pc;">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Title</th>
+            <th>company Name</th>
+            <th>Skills</th>
+            <th>Education</th>
+            <th>Working Mode</th>
+            <th>working Hour</th>
+            <th>Experience</th>
+            <th>Package</th>
+            <th>Location</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+
+    {% if jobs %}
+        {% for job in jobs %}
+              <tr>
+                <td>{{job['id']}}</td>
+                <td>{{job['company_name']}}</td>
+                <td>{{job['title']}}</td>
+                <td>{{job['skills']}}</td>
+                <td>{{job['education']}}</td>
+                <td>{{job['working_mode']}}</td>
+                <td>{{job['working_hour']}}</td>
+                <td>{{job['experience']}}</td>
+                <td>{{job['package']}}</td>
+                <td>{{job['job_location']}}</td>
+              </tr> 
+        {% endfor %}
+    {% else %}
+            <tr>
+                <td colspan="10" style="text-align: center;">No records found</td>
+            </tr> 
+    {% endif %}
+
+    </tbody>
+</table>
+
+
+    
+
+
+
+
+
+{% endblock %}
