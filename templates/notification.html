@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Company Home{% endblock %}
+
+{% block content %}
+<h2>Hi {{ username }}!, Yours Notification From Compnies</h2>
+
+
+<table class="styled-table"  style="width:72cc">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Messages</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if notifications %}
+        {% for notification in notifications %}
+            <tr>
+                <td>{{notification['id']}}</td>
+                <td>{{notification['messages']}}</td>
+            </tr> 
+        {% endfor %}
+    {% else %}
+            <tr>
+                <td colspan="2" style="text-align: center;">No records found</td>
+            </tr> 
+    {% endif %}
+    </tbody>
+</table>
+
+
+    
+
+
+
+
+
+{% endblock %}
