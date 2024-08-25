@@ -5,19 +5,16 @@ import MySQLdb.cursors
 #Thease are Flask application intialization
 app = Flask(__name__)
 
-# Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'your secret key'
 
 
 # Enter your database connection details below for mysql
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'job_guru'
-
-# Intialize MySQL
+app.config['MYSQL_PASSWORD'] = 'NewPassword@123'
+app.config['MYSQL_UNIX_SOCKET'] = '/var/run/mysqld/mysqld.sock'
 mysql = MySQL(app)
-
 
 #This is default login url. it can access get and post request from F.E
 #This is for login
@@ -37,14 +34,12 @@ def login():
             login_is_user = (login_as == 'user')
             jobs = fetch_jobs_data(account, login_as)
             if login_is_user:
-                return render_template("user_home_page.html", jobs = jobs,username=session['username'],login_is_user = login_is_user)
+                return render_template("user_home_page.html", jobs = jobs,username=session['username'])
             else:
-                return render_template("company_home.html", jobs = jobs,username=session['username'],login_is_user = login_is_user)
+                return render_template("company_home.html", jobs = jobs,username=session['username'])
         else:
             msg = 'Incorrect username/password!'
     return render_template('index.html', msg=msg)
-
-
 
 @app.route('/pythonlogin/logout')
 def logout():
@@ -55,13 +50,10 @@ def logout():
    # Redirect to login page
    return redirect(url_for('login'))
 
-
-
-
 # http://localhost:5000/pythinlogin/register - this will be the registration page, we need to use both GET and POST requests
 @app.route('/pythonlogin/register', methods=['GET', 'POST'])
 def register():
-        # Output message if something goes wrong...
+    # Output message if something goes wrong...
     msg = ''
     # Check if "username", "password" and "email" POST requests exist (user submitted form)
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
@@ -137,6 +129,7 @@ def submit_job():
         mysql.connection.commit()
         msg = 'Job Posted Succeffully!'
         return render_template('post_job.html', msg=msg,username=session['username'])
+    return redirect(url_for('login'))
 
 #This will hit when we clicked post job button in UI
 @app.route('/pythonlogin/post_job')
@@ -241,10 +234,6 @@ def delete_job(id):
     return redirect(url_for('login'))
 
 
-
-
-
-
 @app.route('/pythonlogin/home')
 def home():
     # Check if user is loggedin
@@ -256,8 +245,6 @@ def home():
 
 #This is for search api
 #The LIKE operator is used to check specified pattern in a column.
-
-
 @app.route('/pythonlogin/search_api', methods=['GET', 'POST'])
 def search_api():
     # Check if user is loggedin
@@ -416,7 +403,7 @@ def fetch_jobs_data(account, login_as):
 #Output :- job data
 def fetch_jobs_data_by_id(id):
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM jobs WHERE id = %s', (id,))
+    cursor.execute('SELECT * FROM jobs WHERE id = %s', (id))
     # Fetch one record and return result
     jobs = cursor.fetchone()
     return jobs

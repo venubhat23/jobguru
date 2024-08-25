@@ -6,70 +6,70 @@
 <h2>Users(Job Seacker) Home Page.Welcome back, {{ username }}!</h2>
 
 
-        <form action="{{ url_for('search_api') }}" method="post">
-      
-        <h1>Search Job</h1>
-        
-        <fieldset style="background-color: #a7a7a7;width: 72pc;">
-          <input type="text" id="title" name="title" placeholder="Title">
-          
-          
-          <input type="text" id="working_mode" name="working_mode" placeholder="Working Mode(Remote/Office)">
+<form action="{{ url_for('search_api') }}" method="post">
 
-          <input type="text" id="skills" name="skills" placeholder="Skills">
+  <h1>Search Job</h1>
 
-          <input type="text" id="company" name="company" placeholder="company">
+  <fieldset style="background-color: #a7a7a7;width: 72pc;">
+    <input type="text" id="title" name="title" placeholder="Title">
 
-            <button type="submit">Search</button>
-        </fieldset>
 
-        </form>
+    <input type="text" id="working_mode" name="working_mode" placeholder="Working Mode(Remote/Office)">
+
+    <input type="text" id="skills" name="skills" placeholder="Skills">
+
+    <input type="text" id="company" name="company" placeholder="company">
+
+    <button type="submit">Search</button>
+  </fieldset>
+
+</form>
 
 <table class="styled-table" style="width: 72pc;">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Title</th>
-            <th>company Name</th>
-            <th>Skills</th>
-            <th>Education</th>
-            <th>Working Mode</th>
-            <th>working Hour</th>
-            <th>Experience</th>
-            <th>Package</th>
-            <th>Location</th>
-            <th></th>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Title</th>
+      <th>company Name</th>
+      <th>Skills</th>
+      <th>Education</th>
+      <th>Working Mode</th>
+      <th>working Hour</th>
+      <th>Experience</th>
+      <th>Package</th>
+      <th>Location</th>
+      <th></th>
 
-        </tr>
-    </thead>
-    <tbody>
+    </tr>
+  </thead>
+  <tbody>
     {% if jobs %}
-      {% for job in jobs %}
-            <tr>
-              <td>{{job['id']}}</td>
-              <td>{{job['title']}}</td>
-              <td>{{job['company_name']}}</td>
-              <td>{{job['skills']}}</td>
-              <td>{{job['education']}}</td>
-              <td>{{job['working_mode']}}</td>
-              <td>{{job['working_hour']}}</td>
-              <td>{{job['experience']}}</td>
-              <td>{{job['package']}}</td>
-              <td>{{job['job_location']}}</td>
-              <td><a href="/apply/{{job['id']}}" class="btn btn-outline-secondary btn-sm">Apply</a></td>
-            </tr> 
-      {% endfor %}      
+    {% for job in jobs %}
+    <tr>
+      <td>{{job['id']}}</td>
+      <td>{{job['title']}}</td>
+      <td>{{job['company_name']}}</td>
+      <td>{{job['skills']}}</td>
+      <td>{{job['education']}}</td>
+      <td>{{job['working_mode']}}</td>
+      <td>{{job['working_hour']}}</td>
+      <td>{{job['experience']}}</td>
+      <td>{{job['package']}}</td>
+      <td>{{job['job_location']}}</td>
+      <td><a href="/apply/{{job['id']}}" class="btn btn-outline-secondary btn-sm">Apply</a></td>
+    </tr>
+    {% endfor %}
     {% else %}
-            <tr>
-                <td colspan="12" style="text-align: center;">No records found</td>
-            </tr> 
+    <tr>
+      <td colspan="12" style="text-align: center;">No records found</td>
+    </tr>
     {% endif %}
 
-    </tbody>
+  </tbody>
 </table>
 
 
-    
+
 
 
 

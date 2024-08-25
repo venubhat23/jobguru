@@ -1,5 +1,4 @@
-<html style="background-image: url({{ url_for('static', filename='images/job_search.jpg') }});
-">
+<html style="background-image: url({{ url_for('static', filename='images/job_search.jpg') }})">
 
   <head>
         <meta charset="utf-8">
@@ -49,7 +48,7 @@
           <label for="company_established_on">Company Established On:</label>
           <input type="date" id="company_established_on" name="company_established_on">
 
-          <label for="industry_type">Insustry Type:</label>
+          <label for="industry_type">Industry Type:</label>
           <input type="text" id="industry_type" name="industry_type">
 
         </fieldset>
@@ -108,7 +107,7 @@ $(document).ready(function() {
     $("input:radio[name=login]:checked")[0].checked = false;
   });
 });
-	      $("#user_profile").show();
+$("#user_profile").show();
 function showHideDiv(val)
 {
 
