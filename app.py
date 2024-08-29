@@ -9,10 +9,10 @@ app.secret_key = 'your secret key'
 
 
 # Enter your database connection details below for mysql
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_DB'] = 'job_guru'
-app.config['MYSQL_PASSWORD'] = 'NewPassword@123'
+app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net  '
+app.config['MYSQL_USER'] = 'sql12728508'
+app.config['MYSQL_DB'] = 'sql12728508'
+app.config['MYSQL_PASSWORD'] = 'rltKEYjiDm'
 app.config['MYSQL_UNIX_SOCKET'] = '/var/run/mysqld/mysqld.sock'
 mysql = MySQL(app)
 
