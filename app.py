@@ -9,7 +9,7 @@ app.secret_key = 'your secret key'
 
 
 # Enter your database connection details below for mysql
-app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net  '
+app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
 app.config['MYSQL_USER'] = 'sql12728508'
 app.config['MYSQL_DB'] = 'sql12728508'
 app.config['MYSQL_PASSWORD'] = 'rltKEYjiDm'
