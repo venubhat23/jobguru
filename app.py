@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 #Thease are Flask application intialization
+from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 
@@ -26,8 +27,11 @@ def login():
         username = request.form['username']
         password = request.form['password']
         #This is for check the account data with credential
-        account = check_user_credentials(username, password)
-        if account:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM accounts WHERE username = %s', (username,))
+        account = cursor.fetchone()
+
+        if account and check_password_hash(account['password'], password):
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
@@ -61,6 +65,9 @@ def register():
         # Create variables for easy access
         username = request.form['username']
         password = request.form['password']
+        # Hash the password
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+
         email = request.form['email']
         login_as = request.form['login_as']
         login_is_user = (login_as == 'user')
@@ -98,7 +105,7 @@ def register():
             msg = 'Please fill out the form!'
         else:
             # Account doesnt exists and the form data is valid, now insert new account into accounts table
-            cursor.execute('INSERT INTO accounts VALUES (NULL,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s)', (username, password, email,login_as,company_name,company_location,company_established_on,user_location,date_of_birth,gender,))            
+            cursor.execute('INSERT INTO accounts VALUES (NULL,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s)', (username, hashed_password, email,login_as,company_name,company_location,company_established_on,user_location,date_of_birth,gender,))            
              # cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, password, email,))
             mysql.connection.commit()
 
@@ -377,14 +384,6 @@ def notification():
     return redirect(url_for('login'))
 
 
-#Common Methods
-#input:- username, password
-#Output :- list of account
-def check_user_credentials(username, password):
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
-    account = cursor.fetchone()
-    return account
 
 #input:- account, login_as
 #Output :- list of jobs
