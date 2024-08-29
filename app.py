@@ -403,7 +403,7 @@ def fetch_jobs_data(account, login_as):
 #Output :- job data
 def fetch_jobs_data_by_id(id):
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM jobs WHERE id = %s', (id))
+    cursor.execute('SELECT * FROM jobs WHERE id = %s', (id,))
     # Fetch one record and return result
     jobs = cursor.fetchone()
     return jobs

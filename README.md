@@ -157,3 +157,42 @@ Job Guru is designed to streamline the job searching and hiring process. Job see
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+Here's an updated version of your deployment section with the new URL and additional details:
+
+---
+
+## Deployment
+
+### Deployed on Render
+The application is currently deployed and accessible at [https://jobguru-1guni.onrender.com](https://jobguru-1guni.onrender.com/pythonlogin/)
+### Deployed on Free MySQL Hosting
+The MySQL database for the application is hosted on [Free MySQL Hosting](https://www.freemysqlhosting.net/).
+
+### Alternative Deployment Options
+
+#### AWS EC2 and RDS
+Alternatively, you can deploy this application using AWS services:
+
+1. **AWS EC2**: Host your Flask application on an Amazon EC2 instance. EC2 provides scalable compute capacity in the cloud.
+2. **AWS RDS**: Use Amazon RDS to host the MySQL database. RDS offers a managed relational database service that simplifies database administration tasks.
+
+For detailed instructions on deploying to AWS EC2 and RDS, follow these steps:
+
+1. **Setup EC2 Instance**:
+   - Launch an EC2 instance with a suitable AMI (e.g., Ubuntu).
+   - SSH into the instance and install the necessary software (e.g., Python, Flask, Gunicorn).
+   - Deploy your Flask application code to the instance.
+
+2. **Setup RDS**:
+   - Create an RDS instance with MySQL as the database engine.
+   - Configure security groups and network settings to allow your EC2 instance to connect to the RDS instance.
+   - Update your Flask application’s database connection settings to point to the RDS instance.
+
+### Notes
+- Ensure that all environment variables and configurations are correctly set for both deployment environments.
+- For more details on setting up and configuring AWS services, refer to the [AWS Documentation](https://docs.aws.amazon.com/).
+
+---
+
+Feel free to adjust the content further if needed!
