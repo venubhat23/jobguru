@@ -28,7 +28,9 @@
         {% for job in jobs %}
               <tr>
                 <td>{{job['id']}}</td>
+
                 <td><a href="/applied_list/{job['id']}" class="btn btn-outline-secondary btn-sm">{{job['title']}}</a></td>
+
                 <td>{{job['skills']}}</td>
                 <td>{{job['education']}}</td>
                 <td>{{job['working_mode']}}</td>

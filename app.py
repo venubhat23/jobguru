@@ -1,9 +1,9 @@
-#Thease are import from Flask
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 #Thease are Flask application intialization
 app = Flask(__name__)
+
 
 app.secret_key = 'your secret key'
 
@@ -15,6 +15,7 @@ app.config['MYSQL_DB'] = 'job_guru'
 app.config['MYSQL_PASSWORD'] = 'NewPassword@123'
 app.config['MYSQL_UNIX_SOCKET'] = '/var/run/mysqld/mysqld.sock'
 mysql = MySQL(app)
+
 
 #This is default login url. it can access get and post request from F.E
 #This is for login
@@ -34,9 +35,9 @@ def login():
             login_is_user = (login_as == 'user')
             jobs = fetch_jobs_data(account, login_as)
             if login_is_user:
-                return render_template("user_home_page.html", jobs = jobs,username=session['username'])
+                return render_template("user_home_page.html", jobs = jobs,username=session['username'],login_is_user = login_is_user)
             else:
-                return render_template("company_home.html", jobs = jobs,username=session['username'])
+                return render_template("company_home.html", jobs = jobs,username=session['username'],login_is_user = login_is_user)
         else:
             msg = 'Incorrect username/password!'
     return render_template('index.html', msg=msg)
