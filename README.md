@@ -192,7 +192,3 @@ For detailed instructions on deploying to AWS EC2 and RDS, follow these steps:
 ### Notes
 - Ensure that all environment variables and configurations are correctly set for both deployment environments.
 - For more details on setting up and configuring AWS services, refer to the [AWS Documentation](https://docs.aws.amazon.com/).
-
----
-
-Feel free to adjust the content further if needed!
