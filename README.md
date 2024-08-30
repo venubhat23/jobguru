@@ -192,3 +192,4 @@ For detailed instructions on deploying to AWS EC2 and RDS, follow these steps:
 ### Notes
 - Ensure that all environment variables and configurations are correctly set for both deployment environments.
 - For more details on setting up and configuring AWS services, refer to the [AWS Documentation](https://docs.aws.amazon.com/).
+- The Job recruiting platforms can help reduce time-to-hire by 50% and recruitment costs by 50%. https://www.phenom.com/blog/examples-companies-using-ai-recruiting-platform
