@@ -9,11 +9,14 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-# Enter your database connection details below for mysql
-app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
-app.config['MYSQL_USER'] = 'sql12728508'
-app.config['MYSQL_DB'] = 'sql12728508'
-app.config['MYSQL_PASSWORD'] = 'rltKEYjiDm'
+
+
+# Enter your database co    
+app.config['MYSQL_HOST'] = 'database-8.cpgis68645b0.us-east-1.rds.amazonaws.com'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_DB'] = 'admin'
+app.config['MYSQL_PASSWORD'] = 'admin123456'
+
 app.config['MYSQL_UNIX_SOCKET'] = '/var/run/mysqld/mysqld.sock'
 mysql = MySQL(app)
 
